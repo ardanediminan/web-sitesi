@@ -1,12 +1,10 @@
-﻿from flask import Flask, request, redirect, url_for, session, send_from_directory, render_template_string, flash
+from flask import Flask, request, redirect, url_for, session, send_from_directory, render_template_string, flash
 from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
-import os
 app.secret_key = os.environ.get("SECRET_KEY", "local_dev_key")
 
-# İstenen giriş parolası
 SITE_PASSWORD = os.environ.get("SITE_PASSWORD", "ardababapro3169")
 
 BASE_UPLOAD_FOLDER = "uploads"
@@ -156,19 +154,6 @@ DASHBOARD_TEMPLATE = """
             background: #ffffff;
             border-radius: 14px;
             padding: 18px;
-            border: 1px solid #e5e7eb;
-        }
-        .images {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 14px;
-            margin-top: 14px;
-        }
-        .images img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 12px;
             border: 1px solid #e5e7eb;
         }
         .flash {
@@ -428,6 +413,5 @@ def logout():
 
 
 if __name__ == "__main__":
-    import os
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
